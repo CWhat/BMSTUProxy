@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 
@@ -57,12 +58,12 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(WebActivity.PASSWORD_EXTRA, password)
 
         // Сохраняем логин и пароль, если они изменились
-        val editor = sharedPreferences.edit()
-        if (login != lastLogin)
-            editor.putString(LOGIN_PREF, login)
-        if (password != lastPassword)
-            editor.putString(PASSWORD_PREF, password)
-        editor.apply()
+        sharedPreferences.edit {
+            if (login != lastLogin)
+                putString(LOGIN_PREF, login)
+            if (password != lastPassword)
+                putString(PASSWORD_PREF, password)
+        }
 
         startActivity(intent)
     }

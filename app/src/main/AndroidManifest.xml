@@ -6,9 +6,6 @@
     tools:targetApi="o">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- TODO просить права на запись-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
 
     <application
         android:allowBackup="true"
